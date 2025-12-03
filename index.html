@@ -59,68 +59,176 @@
             transform: scale(0.97);
         }
 
-        .footer {
-            margin-top: 30px;
-            font-size: 0.85rem;
-            color: #888;
+        /* Spinner Uiverse.io by Nawsome */
+        .loadingspinner {
+          --square: 26px;
+          --offset: 30px;
+          --duration: 2.4s;
+          --delay: 0.2s;
+          --timing-function: ease-in-out;
+          --in-duration: 0.4s;
+          --in-delay: 0.1s;
+          --in-timing-function: ease-out;
+          width: calc( 3 * var(--offset) + var(--square));
+          height: calc( 2 * var(--offset) + var(--square));
+          margin: 20px auto;
+          position: relative;
+          display: none;
         }
 
-        /* From Uiverse.io by Gautammsharma */ 
-        .comic-button {
-        display: inline-block;
-        padding: 10px 20px;
-        font-size: 24px;
-        font-weight: bold;
-        text-align: center;
-        text-decoration: none;
-        color: #fff;
-        background-color: #ff5252;
-        border: 2px solid #000;
-        border-radius: 10px;
-        box-shadow: 5px 5px 0px #000;
-        transition: all 0.3s ease;
-        cursor: pointer;
+        .loadingspinner div {
+          display: inline-block;
+          background: darkorange;
+          border-radius: 2px;
+          width: var(--square);
+          height: var(--square);
+          position: absolute;
         }
 
-        .comic-button:hover {
-        background-color: #fff;
-        color: #ff5252;
-        border: 2px solid #ff5252;
-        box-shadow: 5px 5px 0px #ff5252;
+        .loadingspinner #square1 {
+          left: calc( 0 * var(--offset) );
+          top: calc( 0 * var(--offset) );
+          animation: square1 var(--duration) var(--delay) var(--timing-function) infinite,
+                     squarefadein var(--in-duration) calc(1 * var(--in-delay)) var(--in-timing-function) both;
         }
 
-        .comic-button:active {
-        background-color: #fcf414;
-        box-shadow: none;
-        transform: translateY(4px);
+        .loadingspinner #square2 {
+          left: calc( 0 * var(--offset) );
+          top: calc( 1 * var(--offset) );
+          animation: square2 var(--duration) var(--delay) var(--timing-function) infinite,
+                     squarefadein var(--in-duration) calc(1 * var(--in-delay)) var(--in-timing-function) both;
         }
 
+        .loadingspinner #square3 {
+          left: calc( 1 * var(--offset) );
+          top: calc( 1 * var(--offset) );
+          animation: square3 var(--duration) var(--delay) var(--timing-function) infinite,
+                     squarefadein var(--in-duration) calc(2 * var(--in-delay)) var(--in-timing-function) both;
+        }
+
+        .loadingspinner #square4 {
+          left: calc( 2 * var(--offset) );
+          top: calc( 1 * var(--offset) );
+          animation: square4 var(--duration) var(--delay) var(--timing-function) infinite,
+                     squarefadein var(--in-duration) calc(3 * var(--in-delay)) var(--in-timing-function) both;
+        }
+
+        .loadingspinner #square5 {
+          left: calc( 3 * var(--offset) );
+          top: calc( 1 * var(--offset) );
+          animation: square5 var(--duration) var(--delay) var(--timing-function) infinite,
+                     squarefadein var(--in-duration) calc(4 * var(--in-delay)) var(--in-timing-function) both;
+        }
+
+        @keyframes square1 {
+          0% {left:0; top:0;} 
+          8.33%,100% {left:0; top:30px;}
+        }
+
+        @keyframes square2 {
+          0% {left:0; top:30px;}
+          8.33% {top:60px;}
+          16.67% {left:30px; top:60px;}
+          25% {left:30px; top:30px;}
+          83.33% {left:30px; top:30px;}
+          91.67% {left:30px; top:0;}
+          100% {left:0; top:0;}
+        }
+
+        @keyframes square3 {
+          0%,16.67% {left:30px; top:30px;}
+          25% {top:0;}
+          33.33% {left:60px; top:0;}
+          41.67% {left:60px; top:30px;}
+          66.67% {left:60px; top:30px;}
+          75% {top:60px;}
+          83.33% {left:30px; top:60px;}
+          91.67% {left:30px; top:30px;}
+        }
+
+        @keyframes square4 {
+          0%,33.33% {left:60px; top:30px;}
+          41.67% {top:60px;}
+          50% {left:90px; top:60px;}
+          58.33% {top:30px;}
+          100% {left:90px; top:30px;}
+        }
+
+        @keyframes square5 {
+          0%,50% {left:90px; top:30px;}
+          58.33% {top:0;}
+          66.67% {left:60px; top:0;}
+          75% {top:30px;}
+          100% {left:60px; top:30px;}
+        }
+
+        @keyframes squarefadein {
+          0% {transform: scale(0.75); opacity: 0;}
+          100% {transform: scale(1); opacity: 1;}
+        }
+
+        #loading-text {
+            display: none;
+            margin-top: 15px;
+            font-size: 1rem;
+            color: #444;
+        }
+
+        #final-message {
+            display: none;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            color: #333;
+            font-weight: 600;
+        }
     </style>
-    <script>
-
-    </script>
 </head>
 <body>
 
     <div class="container">
         <h1>Instalar Origina</h1>
-        <p>Presiona el botón para instalar la aplicación en tu dispositivo iOS.</p>
+        <p id="labelDownload">Presiona el botón para instalar la aplicación en tu dispositivo iOS.</p>
 
-        <a class="install-btn" href="itms-services://?action=download-manifest&url=https://derwin-vqz.github.io/derwin.dev/Origina-ota/docs/manifest.plist">
+        <a class="install-btn" id="installButton" href="itms-services://?action=download-manifest&url=https://derwin-vqz.github.io/derwin.dev/Origina-ota/docs/manifest.plist">
             Descargar e Instalar
         </a>
+
+        <div class="loadingspinner" id="spinner">
+            <div id="square1"></div><div id="square2"></div><div id="square3"></div>
+            <div id="square4"></div><div id="square5"></div>
+        </div>
+
+        <div id="loading-text">Preparando instalación…</div>
+
+        <div id="final-message">
+            Ya puedes abandonar esta pantalla y revisar la instalación desde tu dispositivo.
+        </div>
     </div>
 
-    
-    <div class="loadingspinner">
-        <div id="square1"></div>
-        <div id="square2"></div>
-        <div id="square3"></div>
-        <div id="square4"></div>
-        <div id="square5"></div>
-    </div>
+<script>
+    const button = document.getElementById("installButton");
+    const etiquetaDescarga = document.getElementById("labelDownload");
+    const spinner = document.getElementById("spinner");
+    const loadingText = document.getElementById("loading-text");
+    const finalMessage = document.getElementById("final-message");
 
-    <div class="footer">© 2025 Origina</div>
+    button.addEventListener("click", () => {
+        // Oculta el botón
+        button.style.display = "none";
+        etiquetaDescarga.style.display = "none";
+
+        // Muestra spinner + texto
+        spinner.style.display = "block";
+        loadingText.style.display = "block";
+
+        // Después de 10 segundos mostrar mensaje final
+        setTimeout(() => {
+            spinner.style.display = "none";
+            loadingText.style.display = "none";
+            finalMessage.style.display = "block";
+        }, 10000);
+    });
+</script>
 
 </body>
 </html>
