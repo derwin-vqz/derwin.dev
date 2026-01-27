@@ -203,7 +203,10 @@
         <div id="final-message">
             Ya puedes abandonar esta pantalla y revisar la instalación desde tu dispositivo.
         </div>
+
     </div>
+
+    <div id="last-update" style="font-size: 0.8rem; color: #888; margin-bottom: 15px; font-style: italic;"></div>
 
 <script>
     const button = document.getElementById("installButton");
@@ -228,6 +231,19 @@
             finalMessage.style.display = "block";
         }, 10000);
     });
+
+    async function fetchLastUpdate() {
+        const url = `https://api.github.com/repos/derwin-vqz/derwin.dev/commits?per_page=1`;
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            const date = new Date(data[0].commit.committer.date);
+            document.getElementById('last-update').innerText = `Actualizado el: ${date.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })}`;
+        } catch (e) { 
+            document.getElementById('last-update').style.display = 'none'; 
+        }
+    }
+    fetchLastUpdate();
 </script>
 
 </body>
