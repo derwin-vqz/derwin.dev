@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <title>Instalar Origina</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: #c2c2c6;
+            color: #1c1c1e;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            margin-top: 70px;
+            width: 90%;
+            max-width: 420px;
+            background: white;
+            border-radius: 22px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            font-size: 1.9rem;
+            margin-bottom: 18px;
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.4;
+            margin-bottom: 30px;
+        }
+
+        a.install-btn {
+            display: inline-block;
+            background: #007aff;
+            color: white;
+            padding: 14px 22px;
+            font-size: 1.1rem;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(0, 122, 255, 0.3);
+            transition: transform 0.15s ease;
+        }
+
+        a.install-btn:active {
+            transform: scale(0.97);
+        }
+
+        /* Spinner Uiverse.io by Nawsome */
+        .loadingspinner {
+            --square: 26px;
+            --offset: 30px;
+            --duration: 2.4s;
+            --delay: 0.2s;
+            --timing-function: ease-in-out;
+            --in-duration: 0.4s;
+            --in-delay: 0.1s;
+            --in-timing-function: ease-out;
+            width: calc(3 * var(--offset) + var(--square));
+            height: calc(2 * var(--offset) + var(--square));
+            margin: 20px auto;
+            position: relative;
+            display: none;
+        }
+
+        .loadingspinner div {
+            display: inline-block;
+            background: darkorange;
+            border-radius: 2px;
+            width: var(--square);
+            height: var(--square);
+            position: absolute;
+        }
+
+        .loadingspinner #square1 {
+            left: calc(0 * var(--offset));
+            top: calc(0 * var(--offset));
+            animation: square1 var(--duration) var(--delay) var(--timing-function) infinite,
+                squarefadein var(--in-duration) calc(1 * var(--in-delay)) var(--in-timing-function) both;
+        }
+
+        .loadingspinner #square2 {
+            left: calc(0 * var(--offset));
+            top: calc(1 * var(--offset));
+            animation: square2 var(--duration) var(--delay) var(--timing-function) infinite,
+                squarefadein var(--in-duration) calc(1 * var(--in-delay)) var(--in-timing-function) both;
+        }
+
+        .loadingspinner #square3 {
+            left: calc(1 * var(--offset));
+            top: calc(1 * var(--offset));
+            animation: square3 var(--duration) var(--delay) var(--timing-function) infinite,
+                squarefadein var(--in-duration) calc(2 * var(--in-delay)) var(--in-timing-function) both;
+        }
+
+        .loadingspinner #square4 {
+            left: calc(2 * var(--offset));
+            top: calc(1 * var(--offset));
+            animation: square4 var(--duration) var(--delay) var(--timing-function) infinite,
+                squarefadein var(--in-duration) calc(3 * var(--in-delay)) var(--in-timing-function) both;
+        }
+
+        .loadingspinner #square5 {
+            left: calc(3 * var(--offset));
+            top: calc(1 * var(--offset));
+            animation: square5 var(--duration) var(--delay) var(--timing-function) infinite,
+                squarefadein var(--in-duration) calc(4 * var(--in-delay)) var(--in-timing-function) both;
+        }
+
+        @keyframes square1 {
+            0% {
+                left: 0;
+                top: 0;
+            }
+
+            8.33%,
+            100% {
+                left: 0;
+                top: 30px;
+            }
+        }
+
+        @keyframes square2 {
+            0% {
+                left: 0;
+                top: 30px;
+            }
+
+            8.33% {
+                top: 60px;
+            }
+
+            16.67% {
+                left: 30px;
+                top: 60px;
+            }
+
+            25% {
+                left: 30px;
+                top: 30px;
+            }
+
+            83.33% {
+                left: 30px;
+                top: 30px;
+            }
+
+            91.67% {
+                left: 30px;
+                top: 0;
+            }
+
+            100% {
+                left: 0;
+                top: 0;
+            }
+        }
+
+        @keyframes square3 {
+
+            0%,
+            16.67% {
+                left: 30px;
+                top: 30px;
+            }
+
+            25% {
+                top: 0;
+            }
+
+            33.33% {
+                left: 60px;
+                top: 0;
+            }
+
+            41.67% {
+                left: 60px;
+                top: 30px;
+            }
+
+            66.67% {
+                left: 60px;
+                top: 30px;
+            }
+
+            75% {
+                top: 60px;
+            }
+
+            83.33% {
+                left: 30px;
+                top: 60px;
+            }
+
+            91.67% {
+                left: 30px;
+                top: 30px;
+            }
+        }
+
+        @keyframes square4 {
+
+            0%,
+            33.33% {
+                left: 60px;
+                top: 30px;
+            }
+
+            41.67% {
+                top: 60px;
+            }
+
+            50% {
+                left: 90px;
+                top: 60px;
+            }
+
+            58.33% {
+                top: 30px;
+            }
+
+            100% {
+                left: 90px;
+                top: 30px;
+            }
+        }
+
+        @keyframes square5 {
+
+            0%,
+            50% {
+                left: 90px;
+                top: 30px;
+            }
+
+            58.33% {
+                top: 0;
+            }
+
+            66.67% {
+                left: 60px;
+                top: 0;
+            }
+
+            75% {
+                top: 30px;
+            }
+
+            100% {
+                left: 60px;
+                top: 30px;
+            }
+        }
+
+        @keyframes squarefadein {
+            0% {
+                transform: scale(0.75);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        #loading-text {
+            display: none;
+            margin-top: 15px;
+            font-size: 1rem;
+            color: #444;
+        }
+
+        #final-message {
+            display: none;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            color: #333;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Instalar Origina BETA</h1>
+        <p id="labelDownload">Presiona el botón para descargar e instalar la aplicación en tu dispositivo iOS.</p>
+        <p id="labelDownload">Esta versión es una versión beta, por lo que puede contener errores y no estar lista para
+            producción.</p>
+
+        <a class="install-btn" id="installButton"
+            href="itms-services://?action=download-manifest&url=https://derwin-vqz.github.io/derwin.dev/Origina-ota/docs/manifestDev.plist">
+            Descargar e Instalar
+        </a>
+
+        <div class="loadingspinner" id="spinner">
+            <div id="square1"></div>
+            <div id="square2"></div>
+            <div id="square3"></div>
+            <div id="square4"></div>
+            <div id="square5"></div>
+        </div>
+
+        <div id="loading-text">Preparando instalación…</div>
+
+        <div id="final-message">
+            Ya puedes abandonar esta pantalla y revisar la instalación desde tu dispositivo.
+        </div>
+
+    </div>
+
+    <div id="last-update" style="font-size: 0.8rem; color: #888; margin-top: 15px; font-style: italic;"></div>
+
+    <script>
+        const button = document.getElementById("installButton");
+        const etiquetaDescarga = document.getElementById("labelDownload");
+        const spinner = document.getElementById("spinner");
+        const loadingText = document.getElementById("loading-text");
+        const finalMessage = document.getElementById("final-message");
+
+        button.addEventListener("click", () => {
+            // Oculta el botón
+            button.style.display = "none";
+            etiquetaDescarga.style.display = "none";
+
+            // Muestra spinner + texto
+            spinner.style.display = "block";
+            loadingText.style.display = "block";
+
+            // Después de 10 segundos mostrar mensaje final
+            setTimeout(() => {
+                spinner.style.display = "none";
+                loadingText.style.display = "none";
+                finalMessage.style.display = "block";
+            }, 10000);
+        });
+
+        async function fetchLastUpdate() {
+            const url = `https://api.github.com/repos/derwin-vqz/derwin.dev/commits?per_page=1`;
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                const date = new Date(data[0].commit.committer.date);
+                document.getElementById('last-update').innerText = `Actualizado el: ${date.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })}`;
+            } catch (e) {
+                document.getElementById('last-update').style.display = 'none';
+            }
+        }
+        fetchLastUpdate();
+    </script>
+
+</body>
+
+</html>
