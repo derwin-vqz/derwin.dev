@@ -121,6 +121,34 @@
                 squarefadein var(--in-duration) calc(4 * var(--in-delay)) var(--in-timing-function) both;
         }
 
+        .secondary-btn {
+            display: inline-block;
+            margin-top: 14px;
+            background: #f2f2f7;
+            color: #1c1c1e;
+            padding: 14px 22px;
+            font-size: 1.05rem;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 1px solid #d1d1d6;
+            transition: all .15s ease;
+        }
+
+        .secondary-btn:hover {
+            background: #e5e5ea;
+        }
+
+        .secondary-btn:active {
+            transform: scale(.97);
+        }
+
+        .button-group{
+            display:flex;
+            flex-direction:column;
+            gap:14px;
+        }
+
         @keyframes square1 {
             0% {
                 left: 0;
@@ -298,20 +326,27 @@
 <body>
 
     <div class="container">
-        <h1>Instalar Origina GO Pre-release</h1>
+        <h1>Instalar Origina GO\nPre-release</h1>
         <p id="labelDownload">Presiona el botón para descargar e instalar la aplicación en tu dispositivo.</p>
         <p id="labelDownload">Esta versión es una versión beta, por lo que puede contener errores y no estar lista para
             producción.</p>
 
-        <a class="install-btn" id="installButton"
-            href="itms-services://?action=download-manifest&url=https://derwin-vqz.github.io/derwin.dev/Origina-ota/docs/manifest_originago.plist">
-            Descargar e Instalar para iOS
-        </a>
+        
+        <div class="button-group">
 
-        <a class="install-btn" id="installButton"
-            href="itms-services://?action=download-manifest&url=https://derwin-vqz.github.io/derwin.dev/Origina-ota/docs/apk-release.apk">
-            Descargar e Instalar para Android
-        </a>
+            <a class="install-btn"
+                id="installButton"
+                href="itms-services://?action=download-manifest&url=https://derwin-vqz.github.io/derwin.dev/Origina-ota/docs/manifest_originago.plist">
+                🍎 Descargar para iPhone
+            </a>
+
+            <a class="secondary-btn"
+                id="androidButton"
+                href="#">
+                🤖 Descargar APK (Beta)
+            </a>
+
+        </div>
 
         <div class="loadingspinner" id="spinner">
             <div id="square1"></div>
@@ -338,6 +373,7 @@
         const loadingText = document.getElementById("loading-text");
         const finalMessage = document.getElementById("final-message");
 
+        /*
         button.addEventListener("click", () => {
             // Oculta el botón
             button.style.display = "none";
@@ -353,6 +389,24 @@
                 loadingText.style.display = "none";
                 finalMessage.style.display = "block";
             }, 10000);
+        });*/
+
+        const installButtons = document.querySelectorAll("#installButton, #androidButton");
+
+        installButtons.forEach(btn => {
+            btn.addEventListener("click", () => {
+
+                document.querySelector(".button-group").style.display = "none";
+
+                spinner.style.display = "block";
+                loadingText.style.display = "block";
+
+                setTimeout(() => {
+                    spinner.style.display = "none";
+                    loadingText.style.display = "none";
+                    finalMessage.style.display = "block";
+                }, 10000);
+            });
         });
 
         async function fetchLastUpdate() {
