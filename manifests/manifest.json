@@ -1,8 +1,8 @@
 {
     "general": {
         "appName": "Origina GO",
-        "version": "null",
-        "build": "null",
+        "version": "1.3.0",
+        "build": "1",
         "bundleId": "com.basexpertise.originago"
     },
     "android-config": {
