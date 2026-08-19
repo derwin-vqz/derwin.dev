@@ -1,0 +1,14 @@
+{
+    "general": {
+        "appName": "Origina GO",
+        "version": "null",
+        "build": "null",
+        "bundleId": "com.basexpertise.originago"
+    },
+    "android-config": {
+        "download-link": "https://developer.android.com/guide/topics/manifest/manifest-intro?hl=es-419"
+    },
+    "ios-config": {
+        "download-link": "https://developer.android.com/guide/topics/manifest/manifest-intro?hl=es-419"
+    }
+}
